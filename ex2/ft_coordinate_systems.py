@@ -18,7 +18,7 @@ def ask_coordinate() -> tuple[float, float, float]:
         if len(parts) != 3:
             print("Invalid syntax")
             continue
-        coords: lint[float] = []
+        coords: int[float] = []
         error = False
         for p in parts:
             try:
@@ -43,7 +43,7 @@ def ft_coordinate_system() -> None:
     x2, y2, z2 = ask_coordinate()
     print(f"Got a second tuple: ({x2}, {y2}, {z2})")
     distance = round(get_distance((x1, y1, z1), (x2, y2, z2)), 4)
-    print(f"Distance between the 2 sets of coordimates: {distance}")
+    print(f"Distance between the 2 sets of coordinates: {distance}")
 
 
 if __name__ == "__main__":
