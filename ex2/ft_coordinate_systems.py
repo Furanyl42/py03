@@ -18,7 +18,7 @@ def ask_coordinate() -> tuple[float, float, float]:
         if len(parts) != 3:
             print("Invalid syntax")
             continue
-        coords: int[float] = []
+        coords: list[float] = []
         error = False
         for p in parts:
             try:

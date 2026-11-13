@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_achievement_tracker.py                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: nide-wil <nide-wil@student.42belgium.be>   +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/11/13 16:44:51 by nide-wil          #+#    #+#              #
-#    Updated: 2026/11/13 16:54:04 by nide-wil         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 import random
 
 ACHIEVEMENTS = [
@@ -54,11 +42,11 @@ def ft_achievement_tracker():
     for name, achievements in player_sets.items():
         other_ach = [ach for others, ach in player_sets.items() if others != name]
         other_ach_unioned = set.union(*other_ach)
-        exclu = achievements.difference(other_ach_unioned)
+        exclu = achievements - other_ach_unioned
         print(f"Only {name} has {exclu}")
     print()
     for name, achievements in player_sets.items():
-        missing = achievements.difference(all_achievements)
+        missing = all_achievements - achievements
         print(f"{name} is missing: {missing}")
 
 
