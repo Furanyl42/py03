@@ -9,11 +9,12 @@ def ft_command_quest() -> None:
     print(f"Program name: {name}")
     if not total_args:
         print("No arguments provided!")
-        return
+    else:
+        print(f"Arguments received: {len(total_args)}")
+        for i, arg in enumerate(total_args, start=1):
+            print(f"Argument {i}: {arg}")
 
-    print(f"Arguments received: {len(total_args)}")
-    for i, arg in enumerate(total_args, start=1):
-        print(f"Argument {i}: {arg}")
+    print(f"Total arguments: {len(sys.argv)}")
 
 
 if __name__ == "__main__":

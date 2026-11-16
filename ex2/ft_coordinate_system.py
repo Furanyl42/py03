@@ -10,9 +10,10 @@ def get_distance(
     return distance
 
 
-def ask_coordinate() -> tuple[float, float, float]:
+def get_player_pos() -> tuple[float, float, float]:
+    prompt = "Enter new coordinates as floats in format 'x,y,z': "
     while True:
-        raw_input = input("Enter new coordinates as floats in format 'x,y,z': ")
+        raw_input = input(prompt)
         parts = raw_input.split(",")
 
         if len(parts) != 3:
@@ -33,15 +34,15 @@ def ask_coordinate() -> tuple[float, float, float]:
 
 
 def ft_coordinate_system() -> None:
-    print("== Game Coordinate System ===\n")
+    print("=== Game Coordinate System ===")
     print("Get a first set of coordinates")
-    x1, y1, z1 = ask_coordinate()
+    x1, y1, z1 = get_player_pos()
     print(f"Got a first tuple: ({x1}, {y1}, {z1})")
     print(f"It includes: X={x1}, Y={y1}, Z={z1}")
-    distance_center = round(get_distance((x1, y1, z1), (0, 0, 0)), 4)
-    print(f"Distance to center: {distance_center}\n")
-    x2, y2, z2 = ask_coordinate()
-    print(f"Got a second tuple: ({x2}, {y2}, {z2})")
+    distance_center = round(get_distance((x1, y1, z1), (0.0, 0.0, 0.0)), 4)
+    print(f"Distance to center: {distance_center}")
+    print("Get a second set of coordinates")
+    x2, y2, z2 = get_player_pos()
     distance = round(get_distance((x1, y1, z1), (x2, y2, z2)), 4)
     print(f"Distance between the 2 sets of coordinates: {distance}")
 

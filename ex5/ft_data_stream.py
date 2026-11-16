@@ -1,5 +1,5 @@
-import typing
 import random
+import typing
 
 PLAYERS = ["bob", "alice", "dylan", "charlie", "chris", "nico"]
 ACTIONS = [
@@ -7,21 +7,21 @@ ACTIONS = [
     "eat",
     "sleep",
     "grab",
-    "run",
     "move",
     "climb",
-    "sleep",
     "code",
     "swim",
 ]
 
 
-def gen_event() -> (str, str):
+def gen_event() -> typing.Generator[tuple[str, str], None, None]:
     while True:
         yield (random.choice(PLAYERS), random.choice(ACTIONS))
 
 
-def consume_event(event_list: list[tuple[str, str]]) -> tuple[str, str]:
+def consume_event(
+    event_list: list[tuple[str, str]],
+) -> typing.Generator[tuple[str, str], None, None]:
     while event_list:
         idx = random.randint(0, len(event_list) - 1)
         item = event_list.pop(idx)
@@ -42,7 +42,7 @@ def ft_data_stream() -> None:
     print(f"Built list of 10 events: {event_list}")
     for item in consume_event(event_list):
         print(f"Got event from list: {item}")
-        print(f"Remains in list {event_list}")
+        print(f"Remains in list: {event_list}")
 
 
 if __name__ == "__main__":

@@ -24,18 +24,20 @@ def get_minmax_score(scores: list[int]) -> tuple[int, int]:
 
 
 def ft_score_analytics() -> None:
+    print("=== Player Score Analytics ===")
     scores = process_args()
     total_players = len(scores)
     if not scores:
-        print("No scores provided.", end=" ")
-        print(f"Usage: python3 {sys.argv[0]} <score1> <score2> ...")
+        print(
+            "No scores provided. Usage: python3 "
+            f"{sys.argv[0]} <score1> <score2> ..."
+        )
         return
     total_score = get_total_score(scores)
     high_score, low_score = get_minmax_score(scores)
     score_range = high_score - low_score
     average_score = total_score / total_players
 
-    print("=== Player Score Analytics ===")
     print(f"Scores processed: {scores}")
     print(f"Total players: {total_players}")
     print(f"Total score: {total_score}")

@@ -17,16 +17,16 @@ ACHIEVEMENTS = [
 ]
 
 
-def gen_rand_achievements(achievements: list[str]) -> set[str]:
+def gen_player_achievements(achievements: list[str]) -> set[str]:
     nbr = random.randint(1, len(achievements))
     sample = random.sample(achievements, nbr)
     return set(sample)
 
 
-def ft_achievement_tracker():
+def ft_achievement_tracker() -> None:
     player_names = ["Alice", "Bob", "Charlie", "Dylan"]
     player_sets: dict[str, set[str]] = {
-        name: gen_rand_achievements(ACHIEVEMENTS) for name in player_names
+        name: gen_player_achievements(ACHIEVEMENTS) for name in player_names
     }
 
     print("=== Achievement Tracker System ===\n")
@@ -40,10 +40,12 @@ def ft_achievement_tracker():
     print(f"All distinct achievements: {distinct_ach}\n")
     print(f"Common achievements: {common_ach}\n")
     for name, achievements in player_sets.items():
-        other_ach = [ach for others, ach in player_sets.items() if others != name]
-        other_ach_unioned = set.union(*other_ach)
+        other_sets = [
+            other for player, other in player_sets.items() if player != name
+        ]
+        other_ach_unioned = set.union(*other_sets)
         exclu = achievements - other_ach_unioned
-        print(f"Only {name} has {exclu}")
+        print(f"Only {name} has: {exclu}")
     print()
     for name, achievements in player_sets.items():
         missing = all_achievements - achievements
