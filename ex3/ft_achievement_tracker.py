@@ -34,9 +34,8 @@ def ft_achievement_tracker() -> None:
         print(f"Player {name}: {achievements}")
     print()
     all_achievements = set(ACHIEVEMENTS)
-    sets_list = list(player_sets.values())
-    distinct_ach = set.union(*sets_list)
-    common_ach = set.intersection(*sets_list)
+    distinct_ach = set.union(*player_sets.values())
+    common_ach = set.intersection(*player_sets.values())
     print(f"All distinct achievements: {distinct_ach}\n")
     print(f"Common achievements: {common_ach}\n")
     for name, achievements in player_sets.items():
@@ -44,11 +43,11 @@ def ft_achievement_tracker() -> None:
             other for player, other in player_sets.items() if player != name
         ]
         other_ach_unioned = set.union(*other_sets)
-        exclu = achievements - other_ach_unioned
+        exclu = set.difference(achievements, other_ach_unioned)
         print(f"Only {name} has: {exclu}")
     print()
     for name, achievements in player_sets.items():
-        missing = all_achievements - achievements
+        missing = set.difference(all_achievements, achievements)
         print(f"{name} is missing: {missing}")
 
 
